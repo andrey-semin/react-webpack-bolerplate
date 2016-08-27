@@ -16,7 +16,7 @@
     "hot",
     "reload",
     "hmr",
-    "eslint",
+    "eslint"
   ],
   "author": "Andrey Semin (https://github.com/andrey-semin)",
   "license": "MIT",

@@ -1,6 +1,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
 
+const webpack = require('webpack');
+
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -38,10 +40,25 @@ if (TARGET === 'start' || !TARGET) {
       inline: true,
       progress: true
     },
-    devtool: 'eval-source-map'
+    devtool: 'cheap-eval-source-map'
   });
 }
 
 if (TARGET === 'build') {
-  module.exports = merge(common, {});
+  module.exports = merge(common, {
+    devtool: 'cheap-module-source-map',
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      }),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      })
+    ]
+  });
 }
