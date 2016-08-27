@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "comma-dangle": 0,
+    "max-len": 0,
+    "one-var": ["error", { uninitialized: "always", initialized: "never" }],
+    "react/require-extension": "off",
+    "react/jsx-no-bind": 0,
+    "react/prefer-stateless-function": 0,
+    "react/prefer-es6-class": [2, "always"],
+    "jsx-quotes": [2, "prefer-double"]
+  }
+}
